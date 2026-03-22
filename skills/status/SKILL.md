@@ -19,7 +19,7 @@ Show the current status of the silo repo: changed files, last commit, remote con
 
 ## Configuration
 
-Load `.ccsilorc` from project root for `suffix`, `include`, and `symlink` values. Defaults: suffix `"-ccsilo"`, include `[".claude/", "docs/"]`, symlink same as include.
+Load `.ccsilorc` from project root for `suffix` and `include` values. Defaults: suffix `"-ccsilo"`, include `[".claude/", "docs/"]`.
 
 ## Steps
 
@@ -35,7 +35,7 @@ Load `.ccsilorc` from project root for `suffix`, `include`, and `symlink` values
    - **Branch**: `git -C {repo} branch --show-current`
    - **Remote**: `git -C {repo} remote -v` (show if configured, warn if not)
    - **Sync state**: `git -C {repo} status -sb` (ahead/behind remote)
-   - **Symlink health**: verify items in `symlink` list point to the silo repo correctly. Show silo-only items (in `include` but not `symlink`) separately
+   - **Symlink health**: verify `include` items are correctly symlinked to the silo repo
 
 ### Global Mode (`--global`)
 
@@ -52,4 +52,4 @@ Load `.ccsilorc` from project root for `suffix`, `include`, and `symlink` values
 
 Detect user language and load messages from `i18n/{lang}.yaml` → `common.*` + `status.*` keys.
 Prefix all lines with `[ccsilo:status]`.
-Symlink health check uses `symlink` entries from `.ccsilorc` (or defaults) to verify each symlink target. Silo-only items (in `include` but not `symlink`) are listed but not checked for symlinks.
+Symlink health check uses `include` entries from `.ccsilorc` (or defaults) to verify each symlink target.

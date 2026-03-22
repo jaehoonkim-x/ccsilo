@@ -67,19 +67,13 @@ include:
 exclude:
   - CLAUDE.md
 
-gitignore:
-  - .env
-  - "*.local"
-  - node_modules/
-
 suffix: "-ccsilo"
 ```
 
 | 키 | 기본값 | 설명 |
 |----|--------|------|
-| `include` | `.claude/`, `docs/` | silo로 옮길 파일/디렉토리 |
+| `include` | `.claude/`, `docs/` | silo로 옮기고 symlink로 연결할 파일/디렉토리 |
 | `exclude` | `CLAUDE.md` | 메인 프로젝트에 유지할 파일 |
-| `gitignore` | `.env`, `*.local`, `node_modules/` | silo 저장소 `.gitignore` 항목 |
 | `suffix` | `-ccsilo` | silo 저장소 이름 접미사 |
 
 ## 라이선스

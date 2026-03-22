@@ -67,19 +67,13 @@ include:
 exclude:
   - CLAUDE.md
 
-gitignore:
-  - .env
-  - "*.local"
-  - node_modules/
-
 suffix: "-ccsilo"
 ```
 
 | Key | Default | Description |
 |-----|---------|-------------|
-| `include` | `.claude/`, `docs/` | Files/dirs to move into the silo |
+| `include` | `.claude/`, `docs/` | Files/dirs to move into the silo and symlink back |
 | `exclude` | `CLAUDE.md` | Files to keep in the main project |
-| `gitignore` | `.env`, `*.local`, `node_modules/` | Silo repo `.gitignore` entries |
 | `suffix` | `-ccsilo` | Silo repo name suffix |
 
 ## License
