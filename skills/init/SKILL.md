@@ -1,5 +1,4 @@
 ---
-name: init
 description: Initialize a Claude Code config silo repo and set up symlinks (project or global)
 argument-hint: "[--global]"
 ---

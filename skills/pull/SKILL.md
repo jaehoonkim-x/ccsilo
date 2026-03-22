@@ -1,5 +1,4 @@
 ---
-name: pull
 description: Pull latest changes from the Claude Code config silo repo (project or global)
 argument-hint: "[--global]"
 ---

@@ -1,5 +1,4 @@
 ---
-name: status
 description: Show the current state of the Claude Code config silo repo (project or global)
 argument-hint: "[--global]"
 ---

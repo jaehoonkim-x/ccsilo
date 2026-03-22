@@ -1,5 +1,4 @@
 ---
-name: push
 description: Commit and push Claude Code config changes to the silo repo (project or global)
 argument-hint: "[--global] [-m 'message']"
 ---

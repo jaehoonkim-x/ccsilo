@@ -1,0 +1,24 @@
+{
+  "name": "ccsilo",
+  "owner": {
+    "name": "kimjaehoon"
+  },
+  "plugins": [
+    {
+      "name": "ccsilo",
+      "description": "Isolate and manage Claude Code config files in dedicated git repos",
+      "version": "1.0.0",
+      "author": {
+        "name": "kimjaehoon"
+      },
+      "source": "./",
+      "category": "productivity",
+      "tags": [
+        "silo",
+        "isolate",
+        "git",
+        "config"
+      ]
+    }
+  ]
+}
