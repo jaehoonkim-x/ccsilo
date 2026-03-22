@@ -1,6 +1,6 @@
 {
   "name": "ccsilo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Isolate and manage Claude Code config files in dedicated git repos",
   "author": {
     "name": "kimjaehoon"
