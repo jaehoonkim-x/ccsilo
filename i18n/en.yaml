@@ -1,0 +1,46 @@
+# ccsilo English messages
+# Variables: {repo_path}, {src}, {dest}, {branch}, {message}, {user}, {repo}, {silo_name}, {commit}, {changed_files}
+
+common:
+  project_mode: "Project mode"
+  global_mode: "Global mode"
+  no_repo: "{silo_name} directory not found. Run /ccsilo:init first."
+  no_git: "~/.claude/ is not a git repo. Run /ccsilo:init --global first."
+  no_remote: "⚠ not configured (run /ccsilo:init to create GitHub repo)"
+
+init:
+  created: "Created {repo_path}"
+  symlinked: "Symlinked: {src} → {dest}"
+  git_initialized: "Git initialized"
+  remote_created: "Remote repo created: https://github.com/{user}/{repo}"
+  already_exists: "Already initialized."
+  github_prompt: "Create a private GitHub repo? (y/n)"
+  config_loaded: ".ccsilorc config loaded"
+  config_default: "No .ccsilorc found, using defaults"
+  skipped: "{path} not found, skipping"
+
+push:
+  changes: "Changes:"
+  commit: "Commit: {message}"
+  push_complete: "Push complete → origin/{branch}"
+  confirm: "Push these changes? (y/n)"
+  no_changes: "No changes to push."
+  security_warn: "⚠ Sensitive file detected: {files}"
+
+pull:
+  pull_complete: "Pull complete from {repo_path}"
+  changed_files: "Changed files: {changed_files}"
+  already_up_to_date: "Already up to date."
+
+status:
+  repo: "repo: {repo_path}"
+  branch: "branch: {branch}"
+  last_commit: "last commit: {commit}"
+  remote: "remote: {remote_info}"
+  sync_ok: "sync: ✓ up to date"
+  sync_ahead: "sync: ↑ {count} commits ahead"
+  sync_behind: "sync: ↓ {count} commits behind"
+  changes_none: "changes: none"
+  changes: "changes:"
+  symlink_ok: "symlinks: ✓ {src} → {dest}"
+  symlink_broken: "symlinks: ✗ {src} symlink is broken"

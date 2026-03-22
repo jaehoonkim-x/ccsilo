@@ -1,0 +1,46 @@
+# ccsilo 한국어 메시지
+# 변수: {repo_path}, {src}, {dest}, {branch}, {message}, {user}, {repo}, {silo_name}, {commit}, {changed_files}
+
+common:
+  project_mode: "프로젝트 모드"
+  global_mode: "글로벌 모드"
+  no_repo: "{silo_name} 디렉토리가 없습니다. /ccsilo:init 으로 먼저 초기화하세요."
+  no_git: "~/.claude/가 git repo가 아닙니다. /ccsilo:init --global 로 먼저 초기화하세요."
+  no_remote: "⚠ 설정 안 됨 (/ccsilo:init 으로 GitHub repo 생성 가능)"
+
+init:
+  created: "{repo_path} 생성 완료"
+  symlinked: "심링크 연결: {src} → {dest}"
+  git_initialized: "Git 초기화 완료"
+  remote_created: "원격 repo 생성: https://github.com/{user}/{repo}"
+  already_exists: "이미 초기화되어 있습니다."
+  github_prompt: "GitHub에 private repo를 생성할까요? (y/n)"
+  config_loaded: ".ccsilorc 설정 로드 완료"
+  config_default: ".ccsilorc 없음, 기본값 사용"
+  skipped: "{path} 없음, 건너뜀"
+
+push:
+  changes: "변경사항:"
+  commit: "커밋: {message}"
+  push_complete: "push 완료 → origin/{branch}"
+  confirm: "위 변경사항을 push할까요? (y/n)"
+  no_changes: "변경사항이 없습니다."
+  security_warn: "⚠ 민감 파일 감지: {files}"
+
+pull:
+  pull_complete: "{repo_path}에서 pull 완료"
+  changed_files: "변경 파일: {changed_files}"
+  already_up_to_date: "이미 최신 상태입니다."
+
+status:
+  repo: "repo: {repo_path}"
+  branch: "브랜치: {branch}"
+  last_commit: "마지막 커밋: {commit}"
+  remote: "리모트: {remote_info}"
+  sync_ok: "동기화: ✓ 최신 상태"
+  sync_ahead: "동기화: ↑ {count}개 커밋 ahead"
+  sync_behind: "동기화: ↓ {count}개 커밋 behind"
+  changes_none: "변경사항: 없음"
+  changes: "변경사항:"
+  symlink_ok: "심링크: ✓ {src} → {dest}"
+  symlink_broken: "심링크: ✗ {src} 심링크가 올바르지 않습니다"
