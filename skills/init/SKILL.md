@@ -4,7 +4,7 @@ argument-hint: "[--global]"
 ---
 
 <Purpose>
-Isolate Claude Code config files (.claude/, docs/) from the main project into a dedicated git repo ({project}-claude),
+Isolate Claude Code config files (.claude/, docs/) from the main project into a dedicated git repo ({project}-ccsilo),
 or initialize ~/.claude/ as a git repo for global config versioning.
 </Purpose>
 
@@ -16,7 +16,7 @@ or initialize ~/.claude/ as a git repo for global config versioning.
 ## Flag Parsing
 
 - `--global` → Initialize `~/.claude/` as a git repo
-- No flag → Create `{project}-claude` repo and set up symlinks
+- No flag → Create `{project}-ccsilo` repo and set up symlinks
 
 ## Configuration (.ccsilorc)
 
@@ -39,15 +39,15 @@ gitignore:
   - "*.local"
   - node_modules/
 
-# Silo repo name suffix (default: -claude)
-suffix: "-claude"
+# Silo repo name suffix (default: -ccsilo)
+suffix: "-ccsilo"
 ```
 
 **Defaults** (when no `.ccsilorc` exists):
 - `include`: `[".claude/", "docs/"]`
 - `exclude`: `["CLAUDE.md"]`
 - `gitignore`: `[".env", "*.local", "node_modules/"]`
-- `suffix`: `"-claude"`
+- `suffix`: `"-ccsilo"`
 
 ## Interactive UX Rules
 

@@ -4,7 +4,7 @@ argument-hint: "[--global]"
 ---
 
 <Purpose>
-Pull latest changes from the dedicated Claude Code config git repo ({project}-claude or ~/.claude/).
+Pull latest changes from the dedicated Claude Code config git repo ({project}-ccsilo or ~/.claude/).
 This plugin isolates Claude Code config files from the main project into a separate git repo.
 </Purpose>
 
@@ -16,11 +16,11 @@ This plugin isolates Claude Code config files from the main project into a separ
 ## Flag Parsing
 
 - `--global` → Pull from `~/.claude/` git repo
-- No flag → Pull from `{project}-claude` repo
+- No flag → Pull from `{project}-ccsilo` repo
 
 ## Configuration
 
-Load `.ccsilorc` from project root for `suffix` value. Defaults: suffix `"-claude"`.
+Load `.ccsilorc` from project root for `suffix` value. Defaults: suffix `"-ccsilo"`.
 
 ## Steps
 
@@ -30,7 +30,7 @@ Load `.ccsilorc` from project root for `suffix` value. Defaults: suffix `"-claud
 2. Load `.ccsilorc` from project root (use defaults if not found)
 3. Calculate silo repo path: `{project}{suffix}`
 4. Verify the repo exists. If not, show error and stop
-4. Run `git -C {project}-claude pull origin`
+4. Run `git -C {project}-ccsilo pull origin`
 5. Show result
 
 ### Global Mode (`--global`)

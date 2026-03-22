@@ -4,7 +4,7 @@ argument-hint: "[--global] [-m 'message']"
 ---
 
 <Purpose>
-Commit and push Claude Code config changes to the dedicated silo git repo ({project}-claude or ~/.claude/).
+Commit and push Claude Code config changes to the dedicated silo git repo ({project}-ccsilo or ~/.claude/).
 This plugin isolates Claude Code config files from the main project into a separate git repo.
 </Purpose>
 
@@ -17,11 +17,11 @@ This plugin isolates Claude Code config files from the main project into a separ
 
 - `--global` → Push to `~/.claude/` git repo
 - `-m 'message'` → Custom commit message (auto-generated if omitted)
-- No flag → Push to `{project}-claude` repo
+- No flag → Push to `{project}-ccsilo` repo
 
 ## Configuration
 
-Load `.ccsilorc` from project root for `suffix` value. Defaults: suffix `"-claude"`.
+Load `.ccsilorc` from project root for `suffix` value. Defaults: suffix `"-ccsilo"`.
 
 ## Steps
 
@@ -31,13 +31,13 @@ Load `.ccsilorc` from project root for `suffix` value. Defaults: suffix `"-claud
 2. Load `.ccsilorc` from project root (use defaults if not found)
 3. Calculate silo repo path: `{project}{suffix}`
 4. Verify the repo exists. If not, show error and stop
-4. Run `git -C {project}-claude status --short` to check for changes
+4. Run `git -C {project}-ccsilo status --short` to check for changes
 5. If no changes, stop
 6. If changes exist:
-   - Run `git -C {project}-claude add -A`
+   - Run `git -C {project}-ccsilo add -A`
    - Generate commit message (user-specified or auto: `chore: sync claude config`)
-   - Run `git -C {project}-claude commit -m "{message}"`
-   - Run `git -C {project}-claude push origin`
+   - Run `git -C {project}-ccsilo commit -m "{message}"`
+   - Run `git -C {project}-ccsilo push origin`
 7. Show result
 
 ### Global Mode (`--global`)

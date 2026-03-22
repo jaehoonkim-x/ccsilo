@@ -15,11 +15,11 @@ Show the current status of the silo repo: changed files, last commit, remote con
 ## Flag Parsing
 
 - `--global` → Show status of `~/.claude/` git repo
-- No flag → Show status of `{project}-claude` repo
+- No flag → Show status of `{project}-ccsilo` repo
 
 ## Configuration
 
-Load `.ccsilorc` from project root for `suffix` and `include` values. Defaults: suffix `"-claude"`, include `[".claude/", "docs/"]`.
+Load `.ccsilorc` from project root for `suffix` and `include` values. Defaults: suffix `"-ccsilo"`, include `[".claude/", "docs/"]`.
 
 ## Steps
 
