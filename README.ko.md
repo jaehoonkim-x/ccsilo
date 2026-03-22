@@ -18,8 +18,10 @@ Claude Code는 프로젝트와 함께 설정 및 컨텍스트 파일(`.claude/`,
 
 ## 설치
 
-```bash
-git clone https://github.com/jaehoonkim-x/ccsilo.git ~/.claude/plugins/ccsilo
+Claude Code에서 실행:
+
+```
+/install-plugin ccsilo from https://github.com/jaehoonkim-x/ccsilo.git
 ```
 
 ## 사용법

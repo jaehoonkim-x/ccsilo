@@ -18,8 +18,10 @@ Claude Code generates config and context files (`.claude/`, `docs/`, `AGENTS.md`
 
 ## Install
 
-```bash
-git clone https://github.com/jaehoonkim-x/ccsilo.git ~/.claude/plugins/ccsilo
+Claude Code에서 실행:
+
+```
+/install-plugin ccsilo from https://github.com/jaehoonkim-x/ccsilo.git
 ```
 
 ## Usage
