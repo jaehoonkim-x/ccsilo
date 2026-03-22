@@ -21,7 +21,7 @@ Claude Code generates config and context files (`.claude/`, `docs/`, `AGENTS.md`
 Claude Code에서 실행:
 
 ```
-/install-plugin ccsilo from https://github.com/jaehoonkim-x/ccsilo.git
+/plugin install ccsilo@ccsilo
 ```
 
 ## Usage
