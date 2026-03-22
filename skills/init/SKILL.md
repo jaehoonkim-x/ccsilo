@@ -24,10 +24,18 @@ Before executing, check for `.ccsilorc` in the project root. If not found, use d
 
 ```yaml
 # .ccsilorc — ccsilo configuration
-# Directories/files to include in the silo (symlinked)
+# Directories/files to copy into the silo
 include:
   - .claude/
-  - docs/
+  - docs/api/
+  - docs/guides/
+  - ANTIBOT.md
+
+# Items to symlink back to the project (must be subset of include)
+# Items in include but NOT in symlink are silo-only (version control, no link back)
+symlink:
+  - .claude/
+  - docs/api/
 
 # Files to exclude from silo (kept in project git)
 exclude:
@@ -45,6 +53,7 @@ suffix: "-ccsilo"
 
 **Defaults** (when no `.ccsilorc` exists):
 - `include`: `[".claude/", "docs/"]`
+- `symlink`: same as `include` (all items symlinked by default)
 - `exclude`: `["CLAUDE.md"]`
 - `gitignore`: `[".env", "*.local", "node_modules/"]`
 - `suffix`: `"-ccsilo"`
@@ -70,6 +79,8 @@ suffix: "-ccsilo"
    Body:
      - Silo repo: {silo_name}
      - Include: {include 목록}
+     - Symlink: {symlink 목록}
+     - Silo-only: {include에는 있지만 symlink에는 없는 항목}
      - Exclude: {exclude 목록}
    Options: ["진행", "설정 변경", "취소"]
    ```
@@ -80,10 +91,12 @@ suffix: "-ccsilo"
 9. Copy files/directories listed in `include` from project to silo repo
    - Skip items listed in `exclude`
    - Skip items that don't exist (with info log)
+   - For sub-directory entries (e.g. `docs/api/`), preserve the parent directory structure in silo
 10. Create `.gitignore` from config `gitignore` entries
 11. Save final config as `.ccsilorc` into the silo repo
 12. Generate `setup-symlinks.sh` script:
-    - Symlinks each `include` entry from silo into the original project
+    - Only symlink items listed in `symlink` (NOT all of `include`)
+    - Items in `include` but not in `symlink` are silo-only (no link back to project)
     - Backs up existing files as `.bak` before creating symlinks
 13. Execute the symlink script
 14. Use `AskUserQuestion`:
@@ -143,14 +156,38 @@ This flow runs when no `.ccsilorc` exists. It scans the project and lets the use
    - "전체 선택" → 감지된 모든 항목 포함
    - "직접 선택" → 추가 `AskUserQuestion`으로 개별 항목 y/n 확인
 
-4. **Use `AskUserQuestion`** for exclude:
+4. **Directory Drill-Down** — For each selected **directory**, ask granularity:
+   ```
+   Question: "{dir_name} 포함 범위를 선택하세요"
+   Options: ["전체 디렉토리", "하위 항목 선택"]
+   ```
+   - "전체 디렉토리" → include as-is (e.g. `docs/`)
+   - "하위 항목 선택" → List immediate children (subdirs and files) of that directory, then use `AskUserQuestion` with `multiSelect: true`:
+     ```
+     Question: "{dir_name} 에서 포함할 항목을 선택하세요"
+     Body: {하위 항목 목록}
+     Options: [{child1}, {child2}, {child3}, ...]
+     ```
+     Selected children replace the parent in `include` (e.g. `docs/` → `docs/api/`, `docs/guides/`)
+
+5. **Use `AskUserQuestion`** for exclude:
    ```
    Question: "silo에서 제외할 파일이 있나요?"
    Body: "기본 제외: CLAUDE.md (프로젝트 git에 유지)"
    Options: ["기본값 사용", "직접 선택"]
    ```
 
-5. Save selections and continue to Step 4 of Project Mode
+6. **Symlink Selection** — After finalizing `include` and `exclude`, ask which items to symlink back:
+   ```
+   Question: "프로젝트에 symlink로 연결할 항목을 선택하세요"
+   Body: "선택하지 않은 항목은 silo에만 보관됩니다 (버전 관리 전용)"
+   Options: [{include 항목들}]  (multiSelect: true)
+   ```
+   - Selected items → `symlink` list
+   - Unselected items → silo-only (copied to silo but not linked back)
+   - Default: all items selected
+
+7. Save selections and continue to Step 4 of Project Mode
 
 ## Output Format
 
